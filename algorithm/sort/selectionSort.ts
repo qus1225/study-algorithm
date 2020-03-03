@@ -1,6 +1,6 @@
 // 무조건 직접해야겠다. 직접 짤라니까 어렵네.
-function selectionSort(input: Array<number>) {
-  // TODO: 불변성땜에 꼬인듯.
+export function selectionSort(input: Array<number>) {
+  // TODO: 불변성 유지 때문에 좀 번거롭다. 신경 안 써도 되게 JS스럽게 다시 짜보기
   const arr = JSON.parse(JSON.stringify(input));
   const newArr = [];
   let smallestIndex;
@@ -8,7 +8,6 @@ function selectionSort(input: Array<number>) {
     smallestIndex = findSmallestIndex(arr);
     newArr.push(arr[smallestIndex]);
     arr.splice(smallestIndex, 1);
-    console.log("arr: ", arr);
   });
   return newArr;
 
@@ -24,7 +23,3 @@ function selectionSort(input: Array<number>) {
     return smallestIndex;
   }
 }
-
-const input = [5, 3, 6, 2, 10];
-const result = selectionSort(input);
-console.log("result: ", result);
