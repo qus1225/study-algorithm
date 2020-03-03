@@ -13,7 +13,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "npx jest",
-    "test:specific": "npx jest algorithm/sort/selectionSort.ts",
+    "test:specific": "npx jest tests/search.spec.ts",
     "test-watch": "npx jest --watch"
   },
   "repository": {
