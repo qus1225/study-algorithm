@@ -20,7 +20,6 @@ export function selectionSort(input: Array<number>) {
 }
 
 export function selectionSortWithImmutable(input: Array<number>) {
-  // TODO: 불변성 유지 때문에 좀 번거롭다. 신경 안 써도 되게 JS스럽게 다시 짜보기
   const arr = JSON.parse(JSON.stringify(input));
   const newArr = [];
   let smallestIndex;

@@ -24,5 +24,3 @@ export function binarySearch(
 
   return null;
 }
-
-// TODO: 반복문이 아닌 재귀로 하는 binarySearch도 구현
