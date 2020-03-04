@@ -24,3 +24,29 @@ export function binarySearch(
 
   return null;
 }
+
+// 재귀를 이용한 BinarySearch. 찾은 값의 index가 아닌 갑 자체를 반환
+export function binarySearchWithRecursion(
+  list: Array<number>,
+  itemToSearch: number
+): number {
+  const midIndex = Math.floor((list.length - 1) / 2);
+  let newList;
+
+  // base case
+  if (list[midIndex] === itemToSearch) {
+    return list[midIndex];
+  }
+
+  // recursion
+  if (list[midIndex] > itemToSearch) {
+    newList = list.filter(val => val < list[midIndex]);
+    return binarySearchWithRecursion(newList, itemToSearch);
+  }
+  if (list[midIndex] < itemToSearch) {
+    newList = list.filter(val => val > list[midIndex]);
+    return binarySearchWithRecursion(newList, itemToSearch);
+  }
+
+  return null;
+}
