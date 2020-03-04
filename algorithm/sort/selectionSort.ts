@@ -1,4 +1,3 @@
-// 무조건 직접해야겠다. 직접 짤라니까 어렵네.
 /**
  * JS에 불변성을 유지할 수 있는 기능이 있다면 selectionSortWithImmutable이 직관적이지만,
  * 그렇지 않으므로, selectionSort이 더 JS스러운 코딩이다.
