@@ -22,3 +22,18 @@ export function sum(input: Array<number>) {
   const remains = input.filter((_, index) => index !== 0);
   return input[0] + sum(remains);
 }
+
+// 재귀로 가장 큰수 구하기
+export function findMax(input: Array<number>) {
+  // base case
+  if (input.length === 1) {
+    return input[0];
+  }
+  if (input.length === 2) {
+    return input[0] > input[1] ? input[0] : input[1];
+  }
+
+  // recursion
+  const subMax = findMax(input.filter((_, index) => index !== 0));
+  return input[0] > subMax ? input[0] : subMax;
+}
