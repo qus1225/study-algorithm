@@ -10,3 +10,15 @@ export function factorial(input: number) {
   // recursion
   return input * factorial(input - 1);
 }
+
+// 재귀로 합계구하는 함수. 반복문이 아닌 재귀로 구해봄
+export function sum(input: Array<number>) {
+  // base case
+  if (input.length === 1) {
+    return input[0];
+  }
+
+  // recursion
+  const remains = input.filter((_, index) => index !== 0);
+  return input[0] + sum(remains);
+}
