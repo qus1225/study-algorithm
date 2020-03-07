@@ -49,11 +49,7 @@ export class Graph {
       neighbors = this.adjList[target] || [];
       neighbors.sort();
       neighbors.forEach(val => {
-        if (
-          !visiteds.has(val) &&
-          !queue.indexOf(val) &&
-          typeof val !== "number"
-        ) {
+        if (!visiteds.has(val) && queue.indexOf(val) < 0) {
           queue.push(val);
         }
       });
@@ -63,33 +59,32 @@ export class Graph {
   }
 
   bfsWithRecursion(startV) {
-    let queue: Array<any> = [];
-    const visiteds = new Set();
-    let neighbors = this._adjList[startV] || [];
-    let target;
-    neighbors.sort();
-    queue.push(startV);
-    queue = [...queue, ...neighbors];
+    return bfs([startV], this.adjList, new Set());
 
-    const result = [];
+    function bfs(
+      queue: Array<any> = [],
+      adjList: any = {},
+      visiteds: any = {}
+    ) {
+      let result = [];
 
-    while (queue.length > 0) {
-      target = queue.shift();
+      // base case
+      if (queue.length === 0) {
+        return result;
+      }
+
+      const target = queue.shift();
       result.push(target);
       visiteds.add(target);
-      neighbors = this.adjList[target] || [];
+      const neighbors = adjList[target] || [];
       neighbors.sort();
       neighbors.forEach(val => {
-        if (
-          !visiteds.has(val) &&
-          !queue.indexOf(val) &&
-          typeof val !== "number"
-        ) {
+        if (!visiteds.has(val) && queue.indexOf(val) < 0) {
           queue.push(val);
         }
       });
-    }
 
-    return result;
+      return [...result, ...bfs(queue, adjList, visiteds)];
+    }
   }
 }
