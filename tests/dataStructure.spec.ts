@@ -25,7 +25,30 @@ describe("DataStructure 중", () => {
       F: ["B"],
       G: ["C"]
     });
+  });
 
-    console.log("graph.toString()", graph.toString());
+  it("Graph는 BFS는 잘 동작한다.", () => {
+    const graph = new Graph();
+    const myVertices = [1, 2, 3, 4];
+    myVertices.forEach((_, i) => {
+      graph.addVertex(myVertices[i]);
+    });
+    graph.addEdge(1, 2);
+    graph.addEdge(1, 3);
+    graph.addEdge(1, 4);
+    graph.addEdge(2, 4);
+    graph.addEdge(3, 4);
+
+    expect(graph.vertices).toEqual([1, 2, 3, 4]);
+    expect(graph.adjList).toEqual({
+      1: [2, 3, 4],
+      2: [1, 4],
+      3: [1, 4],
+      4: [1, 2, 3]
+    });
+
+    console.log(graph.bfs(1));
+
+    // console.log("graph", graph);
   });
 });

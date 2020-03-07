@@ -1,6 +1,6 @@
 // TODO: 인접행렬로 그래프 표현
 
-// TODO: 인접리스트로 그래프 표현
+// 인접리스트로 무방향 그래프 표현
 export class Graph {
   // 정점목록
   private _vertices: Array<string>;
@@ -20,7 +20,7 @@ export class Graph {
   }
 
   // 정점 추가
-  addVertex(v: string) {
+  addVertex(v: any) {
     this._vertices.push(v);
     this._adjList[v] = [];
   }
@@ -31,21 +31,35 @@ export class Graph {
     this._adjList[w] ? this._adjList[w].push(v) : (this._adjList[w] = []);
   }
 
-  // debugging 용
-  toString() {
-    let s = "";
-    this.vertices.forEach((_, i) => {
-      s += this.vertices[i] + " -> ";
-      const neighbors = this.adjList[this.vertices[i]];
-      if (neighbors) {
-        neighbors.forEach((_, j) => {
-          s += neighbors[j] + " ";
-        });
-      }
-      s += "\n";
-    });
+  bfs(startV) {
+    let queue: Array<any> = [];
+    const visitedV = new Set();
+    let neighbors = this._adjList[startV] || [];
+    let target;
+    neighbors.sort();
+    queue.push(startV);
+    queue = [...queue, ...neighbors];
 
-    return s;
+    const result = [];
+
+    while (queue.length > 0) {
+      target = queue.shift();
+      result.push(target);
+      visitedV.add(target);
+      neighbors = this.adjList[target] || [];
+      neighbors.sort();
+      neighbors.forEach(val => {
+        if (
+          !visitedV.has(val) &&
+          !queue.indexOf(val) &&
+          typeof val !== "number"
+        ) {
+          queue.push(val);
+        }
+      });
+    }
+
+    return result;
   }
 }
 
