@@ -1,7 +1,7 @@
-import { Graph } from "../dataStructure/graph";
+import { Graph } from "./graph";
 
-describe("DataStructure 중", () => {
-  it("Graph는 잘 동작한다.", () => {
+describe("dataStructure > graph 에서", () => {
+  it("Graph 클래스는 잘 동작한다.", () => {
     const graph = new Graph();
     const myVertices = ["A", "B", "C", "D", "E", "F", "G"];
     myVertices.forEach((_, i) => {
@@ -27,7 +27,7 @@ describe("DataStructure 중", () => {
     });
   });
 
-  it("Graph는 BFS는 잘 동작한다.", () => {
+  it("BFS는 잘 동작한다.", () => {
     const graph = new Graph();
     const myVertices = [1, 2, 3, 4];
     myVertices.forEach((_, i) => {
@@ -48,7 +48,5 @@ describe("DataStructure 중", () => {
     });
 
     console.log(graph.bfs(1));
-
-    // console.log("graph", graph);
   });
 });

@@ -1,6 +1,6 @@
-import { factorial, sum, findMax } from "../algorithm/structure/recursion";
+import { factorial, sum, findMax } from "./recursion";
 
-describe("Recursion 중", () => {
+describe("structure > recursion 에서", () => {
   it("factorial는 잘 동작한다.", () => {
     const result = factorial(5);
     expect(result).toEqual(120);

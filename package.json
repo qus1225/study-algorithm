@@ -12,9 +12,10 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "npx jest",
-    "test:specific": "npx jest tests/dataStructure.spec.ts",
-    "test-watch": "npx jest --watch"
+    "test": "npx jest --verbose",
+    "test:specific": "npx jest dataStructure/graph.spec.ts",
+    "test-watch": "npx jest --watch",
+    "test-watch:specific": "npx jest dataStructure/graph.spec.ts --watch"
   },
   "repository": {
     "type": "git",
