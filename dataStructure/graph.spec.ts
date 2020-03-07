@@ -27,7 +27,7 @@ describe("dataStructure > graph 에서", () => {
     });
   });
 
-  it("BFS는 잘 동작한다.", () => {
+  it("bfsWithLoop 는 잘 동작한다.", () => {
     const graph = new Graph();
     const myVertices = [1, 2, 3, 4];
     myVertices.forEach((_, i) => {
@@ -47,6 +47,30 @@ describe("dataStructure > graph 에서", () => {
       4: [1, 2, 3]
     });
 
-    console.log(graph.bfs(1));
+    expect(graph.bfsWithLoop(1)).toEqual([1, 2, 3, 4]);
+  });
+
+  it.only("bfsWithRecursion 는 잘 동작한다.", () => {
+    const graph = new Graph();
+    const myVertices = [1, 2, 3, 4];
+    myVertices.forEach((_, i) => {
+      graph.addVertex(myVertices[i]);
+    });
+    graph.addEdge(1, 2);
+    graph.addEdge(1, 3);
+    graph.addEdge(1, 4);
+    graph.addEdge(2, 4);
+    graph.addEdge(3, 4);
+
+    expect(graph.vertices).toEqual([1, 2, 3, 4]);
+    expect(graph.adjList).toEqual({
+      1: [2, 3, 4],
+      2: [1, 4],
+      3: [1, 4],
+      4: [1, 2, 3]
+    });
+
+    // console.log(graph.bfsWithRecursion(1));
+    expect(graph.bfsWithLoop(1)).toEqual([1, 2, 3, 4]);
   });
 });

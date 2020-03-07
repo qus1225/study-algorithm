@@ -31,9 +31,9 @@ export class Graph {
     this._adjList[w] ? this._adjList[w].push(v) : (this._adjList[w] = []);
   }
 
-  bfs(startV) {
+  bfsWithLoop(startV) {
     let queue: Array<any> = [];
-    const visitedV = new Set();
+    const visiteds = new Set();
     let neighbors = this._adjList[startV] || [];
     let target;
     neighbors.sort();
@@ -45,12 +45,43 @@ export class Graph {
     while (queue.length > 0) {
       target = queue.shift();
       result.push(target);
-      visitedV.add(target);
+      visiteds.add(target);
       neighbors = this.adjList[target] || [];
       neighbors.sort();
       neighbors.forEach(val => {
         if (
-          !visitedV.has(val) &&
+          !visiteds.has(val) &&
+          !queue.indexOf(val) &&
+          typeof val !== "number"
+        ) {
+          queue.push(val);
+        }
+      });
+    }
+
+    return result;
+  }
+
+  bfsWithRecursion(startV) {
+    let queue: Array<any> = [];
+    const visiteds = new Set();
+    let neighbors = this._adjList[startV] || [];
+    let target;
+    neighbors.sort();
+    queue.push(startV);
+    queue = [...queue, ...neighbors];
+
+    const result = [];
+
+    while (queue.length > 0) {
+      target = queue.shift();
+      result.push(target);
+      visiteds.add(target);
+      neighbors = this.adjList[target] || [];
+      neighbors.sort();
+      neighbors.forEach(val => {
+        if (
+          !visiteds.has(val) &&
           !queue.indexOf(val) &&
           typeof val !== "number"
         ) {
@@ -62,5 +93,3 @@ export class Graph {
     return result;
   }
 }
-
-// TODO: 근접행렬로 그래프 표현
