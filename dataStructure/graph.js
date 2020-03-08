@@ -2,25 +2,23 @@
 
 // 인접리스트로 무방향 그래프 표현
 export class Graph {
-  // 정점목록
-  private _vertices: Array<string>;
-  // 인접리스트
-  private _adjList: {};
-
   constructor() {
     this._vertices = [];
     this._adjList = {};
   }
 
+  // 정점목록
   get vertices() {
     return this._vertices;
   }
+
+  // 인접리스트
   get adjList() {
     return this._adjList;
   }
 
   // 정점 추가
-  addVertex(v: any) {
+  addVertex(v) {
     this._vertices.push(v);
     this._adjList[v] = [];
   }
@@ -32,7 +30,7 @@ export class Graph {
   }
 
   bfsWithLoop(startV) {
-    let queue: Array<any> = [];
+    let queue = [];
     const visiteds = new Set();
     let neighbors = this._adjList[startV] || [];
     let target;
@@ -61,11 +59,7 @@ export class Graph {
   bfsWithRecursion(startV) {
     return bfs([startV], this.adjList, new Set());
 
-    function bfs(
-      queue: Array<any> = [],
-      adjList: any = {},
-      visiteds: any = {}
-    ) {
+    function bfs(queue = [], adjList = {}, visiteds = {}) {
       let result = [];
 
       // base case

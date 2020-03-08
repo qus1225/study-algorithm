@@ -1,7 +1,7 @@
 // 재귀
 
 // 팩토리얼 값을 구하는 함수 - 재귀의 가장 단순한 형태
-export function factorial(input: number) {
+export function factorial(input) {
   // base case
   if (input === 1) {
     return 1;
@@ -12,7 +12,7 @@ export function factorial(input: number) {
 }
 
 // 재귀로 합계구하는 함수. 반복문이 아닌 재귀로 구해봄
-export function sum(input: Array<number>) {
+export function sum(input) {
   // base case
   if (input.length === 1) {
     return input[0];
@@ -24,7 +24,7 @@ export function sum(input: Array<number>) {
 }
 
 // 재귀로 가장 큰수 구하기
-export function findMax(input: Array<number>) {
+export function findMax(input) {
   // base case
   if (input.length === 1) {
     return input[0];

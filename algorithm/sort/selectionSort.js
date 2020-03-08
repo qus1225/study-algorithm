@@ -4,7 +4,7 @@
  *
  */
 
-export function selectionSort(input: Array<number>) {
+export function selectionSort(input) {
   let temp;
   input.forEach((_, criterialindex) => {
     for (let i = criterialindex + 1; i < input.length; i++) {
@@ -19,7 +19,7 @@ export function selectionSort(input: Array<number>) {
   return input;
 }
 
-export function selectionSortWithImmutable(input: Array<number>) {
+export function selectionSortWithImmutable(input) {
   const arr = JSON.parse(JSON.stringify(input));
   const newArr = [];
   let smallestIndex;
@@ -30,7 +30,7 @@ export function selectionSortWithImmutable(input: Array<number>) {
   });
   return newArr;
 
-  function findSmallestIndex(arr: Array<number>) {
+  function findSmallestIndex(arr) {
     let smallest = arr[0];
     let smallestIndex = 0;
     for (let i = 1; i < arr.length; i++) {
