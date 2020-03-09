@@ -22,3 +22,16 @@ export function fibonacci(length) {
 
   return result.join(", ");
 }
+
+// 구구단 계산
+export function multiplicationTable(times) {
+  let result = "";
+  let loopNum = 1;
+  while (loopNum < 10) {
+    result += `${times} * ${loopNum} = ${times * loopNum} \n`;
+
+    loopNum = loopNum + 1;
+  }
+
+  return result;
+}
