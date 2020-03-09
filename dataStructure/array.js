@@ -1,3 +1,15 @@
+// 링 버퍼
+export function CircularArray(maxLength) {
+  this.maxLength = maxLength;
+}
+CircularArray.prototype = Object.create(Array.prototype);
+CircularArray.prototype.push = function(element) {
+  Array.prototype.push.call(this, element);
+  while (this.length > this.maxLength) {
+    this.shift();
+  }
+};
+
 // 피보나치 수열 계산
 export function fibonacci(length) {
   if (length <= 0) {
@@ -26,12 +38,11 @@ export function fibonacci(length) {
 // 구구단 계산
 export function multiplicationTable(times) {
   let result = "";
-  let loopNum = 1;
-  while (loopNum < 10) {
-    result += `${times} * ${loopNum} = ${times * loopNum} \n`;
 
-    loopNum = loopNum + 1;
-  }
+  Array.from({ length: 9 }, (_, index) => {
+    const operand = index + 1;
+    result += `${times} * ${operand} = ${times * operand} \n`;
+  });
 
   return result;
 }

@@ -1,6 +1,20 @@
-import { fibonacci, multiplicationTable } from "./array";
+import { fibonacci, multiplicationTable, CircularArray } from "./array";
 
 describe("dataStructure > array 에서", () => {
+  it("링버퍼는 잘 동작한다.", () => {
+    const ringBuffer = new CircularArray(3);
+
+    Array.from({ length: 5 }, (_, index) => {
+      ringBuffer.push(index);
+    });
+
+    expect(ringBuffer[0]).toEqual(2);
+    expect(ringBuffer[1]).toEqual(3);
+    expect(ringBuffer[2]).toEqual(4);
+
+    console.log("@ringBuffer", ringBuffer);
+  });
+
   it("피보나치 수열 함수는 잘 동작한다.", () => {
     const length = 17;
     const result = fibonacci(length);
