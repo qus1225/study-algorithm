@@ -340,3 +340,45 @@ export class DoublyLinkedList extends LinkedList {
     return result;
   }
 }
+
+export class CircularLinkedList extends LinkedList {
+  append(element) {
+    const node = new LinkedListNode(element);
+
+    if (!this.head) {
+      this.head = node;
+      this.head.next = node;
+    } else {
+      let current = this.head;
+      let last;
+
+      while (current) {
+        if (current.next === this.head) {
+          last = current;
+          break;
+        }
+
+        current = current.next;
+      }
+
+      last.next = node;
+      node.next = this.head;
+    }
+    this.length++;
+  }
+
+  toString() {
+    let result = "### Linked List ###\n\n";
+    result += `[head] ${this.head.toString()}\n\n`;
+    let current = this.head;
+
+    while (current) {
+      result += `[node] ${current.toString()}\n`;
+      current = current.next === this.head ? null : current.next; // 무한 loop 방지
+    }
+
+    result += `\nlength: ${this.length}`;
+
+    return result;
+  }
+}

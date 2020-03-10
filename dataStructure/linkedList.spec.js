@@ -1,4 +1,4 @@
-import { LinkedList, DoublyLinkedList } from "./linkedList";
+import { LinkedList, DoublyLinkedList, CircularLinkedList } from "./linkedList";
 
 describe("dataStructure > linkedList 에서", () => {
   it("LinkedList 클래스는 잘 동작한다.", () => {
@@ -74,7 +74,19 @@ describe("dataStructure > linkedList 에서", () => {
     expect(doublyLinkedList.head.next.element).toEqual("만수");
 
     expect(doublyLinkedList.length).toEqual(2);
+  });
 
-    // console.log(doublyLinkedList.toString());
+  it("CircularLinkedList 클래스는 잘 동작한다.", () => {
+    const circularLinkedList = new CircularLinkedList();
+    circularLinkedList.append("쿠스");
+    circularLinkedList.append("빵꾸");
+    circularLinkedList.append("울랄라");
+
+    expect(circularLinkedList.head.element).toEqual("쿠스");
+    expect(circularLinkedList.head.next.element).toEqual("빵꾸");
+    expect(circularLinkedList.head.next.next.element).toEqual("울랄라");
+    expect(circularLinkedList.head.next.next.next.element).toEqual("쿠스");
+
+    // console.log(circularLinkedList.toString());
   });
 });
