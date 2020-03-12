@@ -181,3 +181,147 @@ export class BinaryTree {
     }
   }
 }
+
+export class BinarySearchTree extends BinaryTree {
+  insert(key) {
+    const node = new BinaryTreeNode(key);
+
+    if (!this.root) {
+      this.root = node;
+    } else {
+      insertNode(this.root, node);
+    }
+
+    function insertNode(node, newNode) {
+      if (!node) {
+        return;
+      }
+
+      if (node.key > newNode.key) {
+        if (node.left) {
+          insertNode(node.left, newNode);
+        } else {
+          node.left = newNode;
+        }
+      } else if (node.key < newNode.key) {
+        if (node.right) {
+          insertNode(node.right, newNode);
+        } else {
+          node.right = newNode;
+        }
+      }
+    }
+  }
+
+  search(key) {
+    if (!this.root) {
+      return false;
+    }
+
+    return searchNode(this.root, key);
+
+    function searchNode(node, key) {
+      if (!node) {
+        return false;
+      }
+
+      if (node.key === key) {
+        return true;
+      }
+
+      if (node.key > key) {
+        return searchNode(node.left, key);
+      }
+
+      if (node.key < key) {
+        return searchNode(node.right, key);
+      }
+
+      return false;
+    }
+  }
+
+  remove(key) {
+    if (!this.root) {
+      return;
+    }
+
+    this.root = removeNode(this.root, key);
+
+    function removeNode(node, key) {
+      if (!node) {
+        return null;
+      }
+
+      if (key < node.key) {
+        node.left = removeNode(node.left, key);
+        return node;
+      } else if (key > node.key) {
+        node.right = removeNode(node.right, key);
+        return node;
+      } else {
+        if (!node.left && !node.right) {
+          node = null;
+          return node;
+        }
+
+        if (!node.left) {
+          node = node.right;
+          return node;
+        } else if (!node.right) {
+          node = node.left;
+          return node;
+        }
+
+        const smallest = findMinNode(node.right);
+        node.key = smallest.key;
+        node.right = removeNode(node.right, smallest.key);
+        return node;
+      }
+
+      function findMinNode(node) {
+        if (!node) {
+          return null;
+        }
+
+        if (!node.left) {
+          return node;
+        } else {
+          return findMinNode(node.left);
+        }
+      }
+    }
+  }
+
+  min() {
+    return findMin(this.root);
+
+    function findMin(node) {
+      if (!node) {
+        return null;
+      }
+
+      if (!node.left) {
+        return node.key;
+      } else {
+        return findMin(node.left);
+      }
+    }
+  }
+
+  max() {
+    return findMax(this.root);
+
+    function findMax(node) {
+      if (!node) {
+        return null;
+      }
+
+      if (!node.right) {
+        return node.key;
+      } else {
+        return findMax(node.right);
+      }
+    }
+  }
+}
