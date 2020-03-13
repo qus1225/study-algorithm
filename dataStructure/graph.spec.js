@@ -1,4 +1,4 @@
-import { Graph } from "./graph";
+import { Graph, WeightedGraph } from "./graph";
 
 describe("dataStructure > graph 에서", () => {
   it("Graph 클래스는 잘 동작한다.", () => {
@@ -71,5 +71,35 @@ describe("dataStructure > graph 에서", () => {
     });
 
     expect(graph.bfsWithRecursion(1)).toEqual([1, 2, 3, 4]);
+  });
+
+  it.only("Graph 클래스는 잘 동작한다", () => {
+    // 클래스를 안 만들어소 해도 되겠구나. (클래스 없이도 해보자)
+    const graph = new WeightedGraph();
+
+    graph.addVertex("START");
+    graph.addVertex("A");
+    graph.addEdge("START", "A", 6);
+    graph.addVertex("B");
+    graph.addEdge("START", "B", 2);
+    graph.addEdge("B", "A", 3);
+    graph.addEdge("B", "END", 5);
+    graph.addEdge("A", "END", 1);
+
+    graph.costs["A"] = 6;
+    graph.costs["B"] = 2;
+    graph.costs["END"] = Infinity;
+
+    graph.parents["A"] = "START";
+    graph.parents["B"] = "START";
+    graph.parents["END"] = null;
+
+    graph.findLowestPath();
+
+    expect(graph.parents["END"]).toEqual("A");
+    expect(graph.parents["A"]).toEqual("B");
+    expect(graph.parents["B"]).toEqual("START");
+
+    // console.log(graph.toString());
   });
 });
