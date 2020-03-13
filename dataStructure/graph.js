@@ -1,38 +1,33 @@
-// TODO: 인접행렬로 그래프 표현
-
-// 인접리스트로 무방향 그래프 표현
+/**
+ * 인접리스트로 그래프 표현
+ * - JavaScript는 인접행렬로 구현하는게 오히려 더 복잡하고 번거롭다.
+ * - 활용도도 인접리스트 구현이 더 나으므로 굳이 인접행렬을 사용할 필요는 없을 것 같다.
+ */
+// 인접리스트로 그래프 표현
 export class Graph {
   constructor() {
-    this._vertices = [];
-    this._adjList = {};
-  }
-
-  // 정점목록
-  get vertices() {
-    return this._vertices;
-  }
-
-  // 인접리스트
-  get adjList() {
-    return this._adjList;
+    // 정점목록
+    this.vertices = [];
+    // 인접리스트
+    this.adjList = {};
   }
 
   // 정점 추가
   addVertex(v) {
-    this._vertices.push(v);
-    this._adjList[v] = [];
+    this.vertices.push(v);
+    this.adjList[v] = [];
   }
 
   // 간선 추가
   addEdge(v, w) {
-    this._adjList[v] ? this._adjList[v].push(w) : (this._adjList[v] = []);
-    this._adjList[w] ? this._adjList[w].push(v) : (this._adjList[w] = []);
+    this.adjList[v] ? this.adjList[v].push(w) : (this.adjList[v] = []);
+    this.adjList[w] ? this.adjList[w].push(v) : (this.adjList[w] = []);
   }
 
   bfsWithLoop(startV) {
     let queue = [];
     const visiteds = new Set();
-    let neighbors = this._adjList[startV] || [];
+    let neighbors = this.adjList[startV] || [];
     let target;
     neighbors.sort();
     queue.push(startV);
