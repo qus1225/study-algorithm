@@ -15,7 +15,7 @@
     "test": "npx jest --verbose",
     "test:specific": "npx jest dataStructure/graph.spec.js",
     "test-watch": "npx jest --watch",
-    "test-watch:specific": "npx jest dataStructure/tree.spec.js --watch"
+    "test-watch:specific": "npx jest dataStructure/heap.spec.js --watch"
   },
   "repository": {
     "type": "git",
