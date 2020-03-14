@@ -73,8 +73,7 @@ describe("dataStructure > graph 에서", () => {
     expect(graph.bfsWithRecursion(1)).toEqual([1, 2, 3, 4]);
   });
 
-  it.only("Graph 클래스는 잘 동작한다", () => {
-    // 클래스를 안 만들어소 해도 되겠구나. (클래스 없이도 해보자)
+  it("Graph 클래스는 잘 동작한다", () => {
     const graph = new WeightedGraph();
 
     graph.addVertex("START");

@@ -85,7 +85,6 @@ export class WeightedGraph {
   constructor() {
     this.vertices = [];
     this.adjList = {};
-    // this.graph = {};
     this.costs = {};
     this.parents = {};
     this.processed = new Set();
