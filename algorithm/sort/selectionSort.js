@@ -20,7 +20,7 @@ export function selectionSort(input) {
 }
 
 export function selectionSortWithImmutable(input) {
-  const arr = JSON.parse(JSON.stringify(input));
+  const arr = input.slice(); // slice()메서드를 통해 shallow copy가 가능.
   const newArr = [];
   let smallestIndex;
   input.forEach((val, index) => {
