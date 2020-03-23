@@ -1,4 +1,3 @@
-import { selectionSort, selectionSortWithImmutable } from "./selectionSort";
 import { quickSort } from "./quickSort";
 
 describe("sort > quickSort 에서", () => {
