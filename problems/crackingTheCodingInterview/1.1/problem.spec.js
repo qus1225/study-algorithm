@@ -1,4 +1,4 @@
-import { hasDuplicate } from "./1.1.js";
+import { hasDuplicate } from "./problem.js";
 
 describe("코딩인터뷰완벽분석 > 1.1 문제", () => {
   it("case1", () => {

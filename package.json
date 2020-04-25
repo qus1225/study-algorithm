@@ -13,9 +13,9 @@
   "devDependencies": {},
   "scripts": {
     "test": "npx jest --verbose",
-    "test:specific": "npx jest problems/crackingTheCodingInterview/1.1.spec.js",
+    "test:specific": "npx jest problems/crackingTheCodingInterview/1.2/problem.spec.js",
     "test-watch": "npx jest --watch",
-    "test-watch:specific": "npx jest problems/crackingTheCodingInterview/1.1.spec.js --watch"
+    "test-watch:specific": "npx jest problems/crackingTheCodingInterview/1.2/problem.spec.js --watch"
   },
   "repository": {
     "type": "git",
